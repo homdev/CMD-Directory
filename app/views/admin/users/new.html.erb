@@ -1,0 +1,66 @@
+<div class="overflow-x-auto bg-white shadow-md rounded-lg p-6">
+<h1 class="text-3xl font-bold text-gray-800 mb-6">Créer un nouvel utilisateur</h1>
+
+<%= form_with model: [:admin, @user], local: true, class: "space-y-6" do |form| %>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <%= form.label :email, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.email_field :email, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+    </div>
+
+    <div>
+      <%= form.label :password, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.password_field :password, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+    </div>
+
+    <div>
+      <%= form.label :name, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_field :name, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+    </div>
+
+    <div>
+      <%= form.label :surname, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_field :surname, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+    </div>
+
+    <div>
+      <%= form.label :username, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_field :username, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+    </div>
+
+    <div>
+      <%= form.label :address, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_field :address, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+    </div>
+
+    <div>
+      <%= form.label :city, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_field :city, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+    </div>
+
+    <div>
+      <%= form.label :country, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_field :country, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+    </div>
+
+    <div>
+      <%= form.label :profession, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_field :profession, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+    </div>
+
+    <div>
+      <%= form.label :phone_number, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_field :phone_number, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+    </div>
+
+    <div>
+      <%= form.label :role, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.select :role, User.roles.keys.map { |role| [role.humanize, role] }, {}, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+    </div>
+  </div>
+
+  <div class="flex justify-end mt-6 p-4">
+    <%= form.submit 'Créer', class: "bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-500 transition duration-300" %>
+  </div>
+<% end %>
+</div>

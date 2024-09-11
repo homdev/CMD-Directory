@@ -1,0 +1,13 @@
+<div id="add-member-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center" data-controller="project">
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-xl font-semibold">Ajouter un Membre</h3>
+      <button class="text-gray-600 hover:text-gray-800" data-action="click->project#closeModal">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <%= render 'project_members/form', project_member: ProjectMember.new %>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<li id="<%= dom_id(project_member) %>" class="flex items-center space-x-4">
+  <img class="h-10 w-10 rounded-full object-cover" src="<%= project_member.user.profile_image_url %>" alt="<%= project_member.user.name %>">
+  <div class="flex-1">
+    <p class="text-gray-800 font-medium"><%= project_member.user.name %></p>
+    <p class="text-gray-600 text-sm"><%= project_member.role.capitalize %></p>
+  </div>
+  <div class="flex space-x-2">
+    <%= link_to edit_project_project_member_path(project_member.project, project_member), class: "text-blue-500 hover:text-blue-600", data: { turbo_frame: dom_id(project_member) } do %>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2h11a2 2v-5m-4-4l7 7m0 0l-7 7m7-7H13" />
+      </svg>
+    <% end %>
+    <%= link_to project_project_member_path(project_member.project, project_member), method: :delete, data: { turbo_confirm: "Supprimer ce membre ?", turbo_frame: dom_id(project_member) }, class: "text-red-500 hover:text-red-600" do %>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    <% end %>
+  </div>
+</li>

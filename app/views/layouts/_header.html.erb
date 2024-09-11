@@ -1,0 +1,34 @@
+<!-- Header -->
+<header class="header px-4 sm:px-6 h-[calc(theme('spacing.header')_-_10px)] sm:h-header bg-white dark:bg-dark-card rounded-none xl:rounded-15 flex items-center justify-between mb-4 xl:m-4 group-data-[sidebar-size=lg]:xl:ml-[calc(theme('spacing.app-menu')_+_32px)] group-data-[sidebar-size=sm]:xl:ml-[calc(theme('spacing.app-menu-sm')_+_32px)] ac-transition" data-controller="header">
+    
+    <!-- Header Left -->
+    <div class="flex items-center gap-4">
+        <div class="menu-hamburger-container flex-center">
+            <button type="button" id="app-menu-hamburger" class="menu-hamburger hidden xl:block" data-action="click->header#toggleMenu"></button>
+            <button type="button" class="menu-hamburger block xl:hidden" data-drawer-target="app-menu-drawer" data-drawer-show="app-menu-drawer" aria-controls="app-menu-drawer" data-action="click->header#toggleDrawer"></button>
+        </div>
+        <div class="w-56 md:w-72 leading-none text-sm relative text-gray-900 dark:text-dark-text hidden sm:block">
+            <!-- Add a title or breadcrumb if needed -->
+        </div>
+    </div>
+    
+    <!-- Header Right -->
+    <div class="flex items-center gap-3">
+        <!-- Dark Light Button -->
+        <button type="button" class="themeMode size-8 flex-center hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md" data-action="click->header#toggleThemeMode">
+            <i class="ri-contrast-2-line text-[22px] dark:text-dark-text-two dark:before:!content-['\f1bf']"></i>
+        </button>
+
+        <!-- Profile Dropdown -->
+        <div class="relative">
+            <button type="button" class="flex items-center space-x-2" id="profileDropdownButton" data-action="click->header#toggleProfileMenu">
+                <%= image_tag(current_user.profile_image.attached? ? current_user.profile_image : "default_profile.png", alt: "Admin Profile", class: "w-8 h-8 rounded-full") %>
+            </button>
+            <div class="absolute right-0 mt-2 w-48 bg-white dark:bg-dark-card shadow-lg rounded-md py-1 hidden h-auto z-10" data-header-target="profileMenu">
+                <%= link_to 'Manage Users', admin_users_path, class: 'block px-4 py-2 text-sm text-gray-700 dark:text-dark-text hover:bg-gray-200 dark:hover:bg-gray-600' %>
+                <%= link_to 'Dashboard', admin_root_path, class: 'block px-4 py-2 text-sm text-gray-700 dark:text-dark-text hover:bg-gray-200 dark:hover:bg-gray-600' %>
+                <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'block px-4 py-2 text-sm text-gray-700 dark:text-dark-text hover:bg-gray-200 dark:hover:bg-gray-600' %>
+            </div>
+        </div>            
+    </div>
+</header>

@@ -1,0 +1,61 @@
+<div class="container mx-auto py-8">
+  <div class="bg-white shadow-lg rounded-lg p-6">
+  <% if @project.errors.any? %>
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+      <strong class="font-bold">Erreur :</strong>
+      <ul>
+        <% @project.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    <%= form_with(model: @project, local: true, data: { turbo: false }) do |form| %>
+      <div class="mb-4">
+        <%= form.label :name, "Titre", class: "block text-sm font-medium text-gray-700" %>
+        <%= form.text_field :name, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" %>
+      </div>
+
+      <div class="mb-4">
+        <%= form.label :description, "Description", class: "block text-sm font-medium text-gray-700" %>
+        <%= form.text_area :description, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" %>
+      </div>
+
+      <div class="mb-4">
+        <%= form.label :sector, "Secteur", class: "block text-sm font-medium text-gray-700" %>
+        <%= form.text_field :sector, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" %>
+      </div>
+
+      <div class="mb-4">
+        <%= form.label :funding_needed, "Financement Requis", class: "block text-sm font-medium text-gray-700" %>
+        <%= form.number_field :funding_needed, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" %>
+      </div>
+
+      <div class="mb-4">
+        <%= form.label :start_date, "Date de Début", class: "block text-sm font-medium text-gray-700" %>
+        <%= form.date_field :start_date, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" %>
+      </div>
+
+      <div class="mb-4">
+        <%= form.label :end_date, "Date de Fin", class: "block text-sm font-medium text-gray-700" %>
+        <%= form.date_field :end_date, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" %>
+      </div>
+
+      <div class="mb-4">
+        <%= form.label :progress, "Progression (%)", class: "block text-sm font-medium text-gray-700" %>
+        <%= form.number_field :progress, in: 0..100, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" %>
+      </div>
+
+      <div class="mb-4">
+        <%= form.label :opportunities, "Opportunités", class: "block text-sm font-medium text-gray-700" %>
+        <%= form.text_area :opportunities, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" %>
+      </div>
+
+      <div class="mt-6 flex justify-end">
+        <%= form.submit "Mettre à jour", class: "bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300 ease-in-out" %>
+      </div>
+    <% end %>
+  </div>
+</div>

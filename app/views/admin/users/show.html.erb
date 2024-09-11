@@ -1,0 +1,52 @@
+<!-- app/views/admin/users/show.html.erb -->
+<div class="bg-white shadow-md rounded-lg p-6 mx-auto">
+  <h1 class="text-4xl font-extrabold text-gray-800 mb-8">Détails de l'utilisateur</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <p class="text-lg font-semibold text-gray-600">Email:</p>
+      <p class="text-xl text-gray-800"><%= @user.email %></p>
+    </div>
+    <div>
+      <p class="text-lg font-semibold text-gray-600">Nom:</p>
+      <p class="text-xl text-gray-800"><%= @user.name %></p>
+    </div>
+    <div>
+      <p class="text-lg font-semibold text-gray-600">Prénom:</p>
+      <p class="text-xl text-gray-800"><%= @user.surname %></p>
+    </div>
+    <div>
+      <p class="text-lg font-semibold text-gray-600">Username:</p>
+      <p class="text-xl text-gray-800"><%= @user.username %></p>
+    </div>
+    <div>
+      <p class="text-lg font-semibold text-gray-600">Adresse:</p>
+      <p class="text-xl text-gray-800"><%= @user.address %></p>
+    </div>
+    <div>
+      <p class="text-lg font-semibold text-gray-600">Ville:</p>
+      <p class="text-xl text-gray-800"><%= @user.city %></p>
+    </div>
+    <div>
+      <p class="text-lg font-semibold text-gray-600">Pays:</p>
+      <p class="text-xl text-gray-800"><%= @user.country %></p>
+    </div>
+    <div>
+      <p class="text-lg font-semibold text-gray-600">Profession:</p>
+      <p class="text-xl text-gray-800"><%= @user.profession %></p>
+    </div>
+    <div>
+      <p class="text-lg font-semibold text-gray-600">Numéro de téléphone:</p>
+      <p class="text-xl text-gray-800"><%= @user.phone_number %></p>
+    </div>
+    <div>
+      <p class="text-lg font-semibold text-gray-600">Rôle:</p>
+      <p class="text-xl text-gray-800"><%= @user.role.humanize %></p>
+    </div>
+  </div>
+
+  <div class="mt-8 flex justify-between">
+    <%= link_to 'Éditer', edit_admin_user_path(@user), class: 'bg-green-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-600 transition duration-300' %>
+    <%= link_to 'Retour à la liste', admin_users_path, class: 'bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600 transition duration-300' %>
+  </div>
+</div>

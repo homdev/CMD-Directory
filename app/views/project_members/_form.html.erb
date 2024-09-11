@@ -1,0 +1,17 @@
+<%= form_with(model: [@project, @project_member], local: false, data: { turbo_frame: dom_id(@project_member) }) do |f| %>
+    <div class="mb-4">
+      <%= f.label :user_id, "Sélectionnez un utilisateur", class: "block text-gray-700" %>
+      <%= f.select :user_id, options_from_collection_for_select(User.all, :id, :name, @project_member.user_id), { prompt: "Choisir un utilisateur" }, class: "mt-1 block w-full border border-gray-300 rounded-md p-2" %>
+    </div>
+    
+    <div class="mb-4">
+      <%= f.label :role, "Rôle", class: "block text-gray-700" %>
+      <%= f.select :role, options_for_select([['Collaborateur', 'collaborator'], ['Observateur', 'observer']], @project_member.role), { prompt: "Choisir un rôle" }, class: "mt-1 block w-full border border-gray-300 rounded-md p-2" %>
+    </div>
+    
+    <div class="flex justify-end space-x-2">
+      <button type="button" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400" data-action="click->project#closeModal">Annuler</button>
+      <%= f.submit "Enregistrer", class: "px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition" %>
+    </div>
+  <% end %>
+  

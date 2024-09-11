@@ -1,0 +1,92 @@
+/* Bannières */
+.member-details-banner-wrapper .member-details-banner {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+  }
+  
+  .member-details-banner-wrapper .banner-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .member-details-banner-wrapper .banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .member-details-banner-wrapper .banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
+    z-index: 1;
+  }
+  
+  /* Conteneur principal */
+  .member-details-container-wrapper .member-details-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -100px;
+    padding: 20px;
+  }
+  
+  /* Carte de membre */
+  .member-details-container-wrapper .member-card {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .member-details-container-wrapper .member-profile-picture {
+    margin-top: -70px;
+    margin-bottom: 20px;
+  }
+  
+  .member-details-container-wrapper .profile-image {
+    border-radius: 50%;
+    border: 5px solid #ffffff;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  /* Informations du membre */
+  .member-details-container-wrapper .member-info {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .member-details-container-wrapper .member-name {
+    font-size: 1.8em;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .member-details-container-wrapper .member-username {
+    font-size: 1.2em;
+    color: #777;
+    margin-bottom: 15px;
+  }
+  
+  .member-details-container-wrapper .member-email,
+  .member-details-container-wrapper .member-role {
+    font-size: 1em;
+    color: #555;
+  }
+  
+  .member-details-container-wrapper .member-role strong {
+    font-weight: 600;
+    color: #333;
+  }
+  

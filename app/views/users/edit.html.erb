@@ -1,0 +1,74 @@
+<div class="account-container max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg mt-10">
+  <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">Éditer le Compte</h1>
+
+  <%= form_with model: @user, local: true, html: { multipart: true, class: 'space-y-6' } do |form| %>
+    <div class="account-banner relative">
+      <%= image_tag @user.banner_image.attached? ? @user.banner_image.variant(resize_to_fill: [1200, 400]) : 'default_banner.png', alt: @user.username, class: 'w-full h-64 object-cover rounded-lg shadow-md banner-image' %>
+      <div class="absolute inset-0 bg-black bg-opacity-25 rounded-lg"></div>
+      <div class="absolute bottom-4 left-4">
+        <label class="bg-blue-600 text-white py-2 px-4 rounded-lg shadow-lg hover:bg-blue-700 cursor-pointer">
+          Changer la bannière
+          <%= form.file_field :banner_image, class: "hidden" %>
+        </label>
+      </div>
+    </div>
+
+    <div class="account-profile-picture flex justify-center -mt-16">
+      <div class="relative">
+        <%= image_tag @user.profile_image.attached? ? @user.profile_image.variant(resize_to_fill: [200, 200]) : 'default_profile.png', alt: @user.username, class: 'w-40 h-40 rounded-full object-cover border-4 border-white shadow-lg profile-image' %>
+        <div class="absolute bottom-0 right-0">
+          <label class="bg-green-600 text-white py-1 px-2 rounded-full shadow-lg hover:bg-green-700 cursor-pointer flex items-center">
+            <input class="hidden" type="file" name="user[profile_image]" id="user_profile_image">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M17.707 5.293a1 1 0 00-1.414 0L15 6.586 13.414 5l1.293-1.293a1 1 0 00-1.414-1.414L12 4.586 8.414 1 7 2.414l4.586 4.586L8 11l-4.293-4.293a1 1 0 00-1.414 1.414L6.586 12l-1.293 1.293a1 1 0 000 1.414l6.586 6.586a1 1 0 001.414-1.414L10 15.414l2.586-2.586L19 13.586a1 1 0 001.707-.707v-7a1 1 0 00-.293-.707l-2-2a1 1 0 00-.707-.293z"></path>
+            </svg>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="account-info grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="form-group">
+        <%= form.label :name, "Prénom", class: "block text-sm font-medium text-gray-700" %>
+        <%= form.text_field :name, class: "mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500", placeholder: "Prénom" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :surname, "Nom", class: "block text-sm font-medium text-gray-700" %>
+        <%= form.text_field :surname, class: "mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500", placeholder: "Nom" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :email, "Email", class: "block text-sm font-medium text-gray-700" %>
+        <%= form.text_field :email, class: "mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500", placeholder: "Email" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :username, "Nom d'utilisateur", class: "block text-sm font-medium text-gray-700" %>
+        <%= form.text_field :username, class: "mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500", placeholder: "Nom d'utilisateur" %>
+      </div>
+      <!-- Ajoutez ici les champs pour adresse, ville, pays, profession, téléphone -->
+      <div class="form-group">
+        <%= form.label :address, "Adresse", class: "block text-sm font-medium text-gray-700" %>
+        <%= form.text_field :address, class: "mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500", placeholder: "Adresse" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :city, "Ville", class: "block text-sm font-medium text-gray-700" %>
+        <%= form.text_field :city, class: "mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500", placeholder: "Ville" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :country, "Pays", class: "block text-sm font-medium text-gray-700" %>
+        <%= form.text_field :country, class: "mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500", placeholder: "Pays" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :profession, "Profession", class: "block text-sm font-medium text-gray-700" %>
+        <%= form.text_field :profession, class: "mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500", placeholder: "Profession" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :phone_number, "Numéro de téléphone", class: "block text-sm font-medium text-gray-700" %>
+        <%= form.text_field :phone_number, class: "mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500", placeholder: "Numéro de téléphone" %>
+      </div>
+    </div>
+
+    <div class="form-group mt-8">
+      <%= form.submit "Mettre à jour", class: "w-full py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" %>
+    </div>
+  <% end %>
+</div>

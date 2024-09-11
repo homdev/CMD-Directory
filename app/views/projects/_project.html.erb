@@ -1,0 +1,31 @@
+<div class="bg-white shadow-lg rounded-lg p-6">
+  <!-- Titre du projet -->
+  <h2 class="text-xl font-semibold"><%= project.name %></h2>
+
+  <!-- Description du projet -->
+  <p class="text-gray-600 mt-2"><%= truncate(project.description, length: 100) %></p>
+
+  <!-- Secteur du projet -->
+  <p class="text-sm text-gray-500 mt-4">Secteur : <%= project.sector %></p>
+
+  <!-- Jauge d'évaluation -->
+  <div class="mt-4">
+    <p class="text-sm font-semibold text-gray-700">Évaluation :</p>
+    <div class="w-full bg-gray-200 rounded-full h-5">
+      <% evaluation_score = (project.evaluations.average(:maturity_level) || 0).to_f %>
+      <div class="h-5 rounded-full <%= evaluation_color_class(evaluation_score) %>" style="width: <%= (evaluation_score / 5) * 100 %>%;">
+      </div>
+    </div>
+    <p class="text-sm text-gray-500 mt-2">
+      <%= evaluation_score > 0 ? "#{evaluation_score.round(1)} / 5" : "Pas encore évalué" %>
+    </p>
+  </div>
+
+  <!-- Liens d'action -->
+  <div class="mt-4 flex justify-between items-center">
+    <%= link_to 'Voir Détails', project_path(project), class: 'text-blue-500 hover:text-blue-700' %>
+    <% if policy(project).update? %>
+      <%= link_to 'Modifier', edit_project_path(project), class: 'text-green-500 hover:text-green-700' %>
+    <% end %>
+  </div>
+</div>

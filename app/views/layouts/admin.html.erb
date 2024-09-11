@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr" data-sidebar-size="lg" data-theme-mode="light">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <!-- CSS -->
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+  <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+  <!-- JavaScript -->
+  <%= javascript_importmap_tags %>
+</head>
+
+<body class="bg-body-light dark:bg-dark-body">
+
+    <%= render 'layouts/header' %>
+
+    <!-- Main Content -->
+  
+    
+    <div class=" main-content group-data-[sidebar-size=lg]:xl:ml-[calc(theme('spacing.app-menu')_+_16px)] group-data-[sidebar-size=sm]:xl:ml-[calc(theme('spacing.app-menu-sm')_+_16px)] px-4 ac-transition">
+      
+    
+      <%= yield %>
+
+    </div>
+
+</body>
+</html>

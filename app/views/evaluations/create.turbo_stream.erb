@@ -1,0 +1,3 @@
+<%= turbo_stream.append "evaluation_list", partial: "evaluations/evaluation", locals: { evaluation: @evaluation } %>
+<%= turbo_stream.replace "add-evaluation-modal", partial: "shared/empty" %>
+<script>console.log('Évaluation ajoutée dynamiquement via Turbo Frame')</script>

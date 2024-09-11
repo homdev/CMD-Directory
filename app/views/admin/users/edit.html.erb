@@ -1,0 +1,124 @@
+<div class="bg-white shadow-md rounded-lg overflow-hidden">
+  <%= form_with model: @user, url: admin_user_path(@user), method: :patch, local: true, multipart: true, class: 'space-y-6' do |form| %>
+
+    <!-- Affichage des erreurs de validation -->
+    <% if @user.errors.any? %>
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+        <strong class="font-bold">Des erreurs ont été trouvées :</strong>
+        <ul class="list-disc pl-5">
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="relative">
+      <!-- Bannière de l'utilisateur -->
+      <% if @user.persisted? && @user.banner_image.attached? %>
+        <%= image_tag @user.banner_image.variant(resize_to_fill: [1200, 400]), alt: @user.username, id: 'bannerPreview', class: 'w-full h-64 md:h-96 object-cover' %>
+      <% else %>
+        <%= image_tag 'default_banner.png', alt: @user.username, id: 'bannerPreview', class: 'w-full h-64 md:h-96 object-cover' %>
+      <% end %>
+
+      <!-- Bouton pour changer la bannière -->
+      <div class="absolute top-4 right-4 flex items-center">
+        <label class="bg-blue-600 text-white py-2 px-4 rounded-lg shadow-lg hover:bg-blue-700 cursor-pointer flex items-center space-x-2">
+          <span>Changer la bannière</span>
+          <%= form.file_field :banner_image, id: 'bannerInput', class: 'hidden' %>
+        </label>
+      </div>
+
+      <!-- Image de profil superposée, centrée et débordant sur la bannière -->
+      <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
+        <% if @user.persisted? && @user.profile_image.attached? %>
+          <%= image_tag @user.profile_image.variant(resize_to_fill: [150, 150]), alt: @user.username, id: 'profilePreview', class: 'w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-white shadow-lg' %>
+        <% else %>
+          <%= image_tag 'default_profile.png', alt: @user.username, id: 'profilePreview', class: 'w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-white shadow-lg' %>
+        <% end %>
+
+        <!-- Bouton pour changer la photo de profil -->
+        <div class="absolute bottom-0 right-4">
+          <label class="bg-green-600 text-white py-1 px-2 rounded-full shadow-lg hover:bg-green-700 cursor-pointer flex items-center space-x-2">
+            <%= form.file_field :profile_image, id: 'profileInput', class: 'hidden' %>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232a3 3 0 010 4.242l-7.242 7.242a3 3 0 01-4.242 0L2 13.6V16h2.4l1.293 1.293a3 3 0 004.242 0l7.242-7.242a3 3 0 010-4.242z" />
+            </svg>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formulaire de mise à jour des informations utilisateur -->
+    <div class="px-6 py-10">
+      <h1 class="text-1xl font-bold text-gray-800 mb-8">Éditer l'utilisateur</h1>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <%= form.label :name, "Prénom", class: "block text-sm font-medium text-gray-700" %>
+          <%= form.text_field :name, class: "mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500", placeholder: "Prénom" %>
+        </div>
+        <div>
+          <%= form.label :surname, "Nom", class: "block text-sm font-medium text-gray-700" %>
+          <%= form.text_field :surname, class: "mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500", placeholder: "Nom" %>
+        </div>
+        <div>
+          <%= form.label :email, "Email", class: "block text-sm font-medium text-gray-700" %>
+          <%= form.text_field :email, class: "mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500", placeholder: "Email" %>
+        </div>
+        <div>
+          <%= form.label :username, "Nom d'utilisateur", class: "block text-sm font-medium text-gray-700" %>
+          <%= form.text_field :username, class: "mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500", placeholder: "Nom d'utilisateur" %>
+        </div>
+        <div>
+          <%= form.label :address, "Adresse", class: "block text-sm font-medium text-gray-700" %>
+          <%= form.text_field :address, class: "mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500", placeholder: "Adresse" %>
+        </div>
+        <div>
+          <%= form.label :city, "Ville", class: "block text-sm font-medium text-gray-700" %>
+          <%= form.text_field :city, class: "mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500", placeholder: "Ville" %>
+        </div>
+        <div>
+          <%= form.label :country, "Pays", class: "block text-sm font-medium text-gray-700" %>
+          <%= form.text_field :country, class: "mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500", placeholder: "Pays" %>
+        </div>
+        <div>
+          <%= form.label :profession, "Profession", class: "block text-sm font-medium text-gray-700" %>
+          <%= form.text_field :profession, class: "mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500", placeholder: "Profession" %>
+        </div>
+        <div>
+          <%= form.label :phone_number, "Numéro de téléphone", class: "block text-sm font-medium text-gray-700" %>
+          <%= form.text_field :phone_number, class: "mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500", placeholder: "Numéro de téléphone" %>
+        </div>
+        <div>
+          <%= form.label :role, "Rôle", class: "block text-sm font-medium text-gray-700" %>
+          <%= form.select :role, User.roles.keys.map { |role| [role.humanize, role] }, {}, class: "mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" %>
+        </div>
+      </div>
+
+      <div class="flex justify-end mt-6">
+        <%= form.submit 'Mettre à jour', class: "bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-500 transition duration-300" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
+<script>
+  document.getElementById("bannerInput").addEventListener("change", function() {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById("bannerPreview").src = e.target.result;
+    }
+    reader.readAsDataURL(this.files[0]);
+  });
+
+  document.getElementById("profileInput").addEventListener("change", function() {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById("profilePreview").src = e.target.result;
+    }
+    reader.readAsDataURL(this.files[0]);
+  });
+</script>

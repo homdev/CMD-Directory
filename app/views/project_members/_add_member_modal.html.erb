@@ -1,0 +1,26 @@
+<div id="add-member-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center">
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-xl font-semibold">Ajouter un Membre</h3>
+      <button class="text-gray-600 hover:text-gray-800" onclick="document.getElementById('add-member-modal').classList.add('hidden')">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <%= form_with url: project_project_members_path(@project), method: :post, local: false do |f| %>
+      <div class="mb-4">
+        <%= f.label :user_id, "Sélectionnez un utilisateur", class: "block text-gray-700" %>
+        <%= f.select :user_id, options_from_collection_for_select(User.all, :id, :name), { prompt: "Choisir un utilisateur" }, class: "mt-1 block w-full border border-gray-300 rounded-md p-2" %>
+      </div>
+      <div class="mb-4">
+        <%= f.label :role, "Rôle", class: "block text-gray-700" %>
+        <%= f.select :role, options_for_select([['Collaborateur', 'collaborator'], ['Observateur', 'observer']]), { prompt: "Choisir un rôle" }, class: "mt-1 block w-full border border-gray-300 rounded-md p-2" %>
+      </div>
+      <div class="flex justify-end space-x-2">
+        <button type="button" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400" onclick="document.getElementById('add-member-modal').classList.add('hidden')">Annuler</button>
+        <%= f.submit "Ajouter", class: "px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition" %>
+      </div>
+    <% end %>
+  </div>
+</div>

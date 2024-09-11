@@ -1,0 +1,29 @@
+<div id="add-evaluation-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center">
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-lg p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-xl font-semibold">Ajouter une Évaluation</h3>
+      <button class="text-gray-600 hover:text-gray-800" onclick="document.getElementById('add-evaluation-modal').classList.add('hidden')">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    
+    <%= form_with model: [@project, Evaluation.new], url: project_evaluations_path(@project), method: :post, local: false do |f| %>
+      <div class="mb-4">
+        <%= f.label :maturity_level, "Niveau de maturité", class: "block text-gray-700" %>
+        <%= f.select :maturity_level, options_for_select([['1 - Idée', 1], ['2 - Prototype', 2], ['3 - MVP', 3], ['4 - Produit', 4], ['5 - Scalabilité', 5]]), {}, class: "mt-1 block w-full border-gray-300 rounded-md" %>
+      </div>
+
+      <div class="mb-4">
+        <%= f.label :feedback, "Feedback", class: "block text-gray-700" %>
+        <%= f.text_area :feedback, class: "mt-1 block w-full border-gray-300 rounded-md" %>
+      </div>
+
+      <div class="flex justify-end space-x-2">
+        <button type="button" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400" onclick="document.getElementById('add-evaluation-modal').classList.add('hidden')">Annuler</button>
+        <%= f.submit "Ajouter", class: "px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+/* app/assets/stylesheets/home.scss */
+.home-page {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+  
+    header {
+      background: #333;
+      color: #fff;
+      padding: 10px 0;
+    }
+  
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 10%;
+      
+      .navbar-brand {
+        font-size: 24px;
+        font-weight: bold;
+      }
+  
+      .navbar-links {
+        .nav-link {
+          margin-left: 20px;
+          color: #fff;
+          text-decoration: none;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  
+    .main-content {
+      padding: 40px 0;
+      h1 {
+        font-size: 48px;
+        color: #333;
+      }
+      p {
+        color: #666;
+        font-size: 20px;
+      }
+    }
+  
+    footer {
+      background: #333;
+      color: #fff;
+      padding: 10px 0;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+  }
+  

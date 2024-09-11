@@ -1,0 +1,35 @@
+<!-- Start Main Content -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <!-- Total Users Card -->
+  <div class="card p-6 bg-white dark:bg-dark-card shadow-lg rounded-md">
+    <div class="flex items-center">
+      <div class="text-3xl font-semibold text-gray-900 dark:text-dark-text">
+        <%= @total_users %>
+      </div>
+      <div class="ml-4 text-sm text-gray-600 dark:text-dark-text">
+        Total Users
+      </div>
+    </div>
+  </div>
+
+  <!-- Users by Role -->
+  <% if @users_by_role.present? %>
+    <% @users_by_role.each do |role, count| %>
+      <div class="card p-6 bg-white dark:bg-dark-card shadow-lg rounded-md">
+        <div class="flex items-center">
+          <div class="text-3xl font-semibold text-gray-900 dark:text-dark-text">
+            <%= count %>
+          </div>
+          <div class="ml-4 text-sm text-gray-600 dark:text-dark-text capitalize">
+            <%= role %> Users
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="col-span-full">
+      <p class="text-sm text-gray-600 dark:text-dark-text">No users found.</p>
+    </div>
+  <% end %>
+</div>
+<!-- End Main Content -->

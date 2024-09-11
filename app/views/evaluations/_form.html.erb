@@ -1,0 +1,15 @@
+<%= turbo_frame_tag "new_evaluation" do %>
+  <%= form_with(model: [@project, @evaluation], local: false, data: { controller: "evaluation", target: "evaluation.form", action: "turbo:submit-end->evaluation#handleSubmit" }) do |form| %>
+    <div class="mb-4">
+      <%= form.label :maturity_level, "Niveau de maturité", class: "block text-sm font-medium text-gray-700" %>
+      <%= form.select :maturity_level, options_for_select([['1 - Idée', 1], ['2 - Prototype', 2], ['3 - MVP', 3], ['4 - Produit', 4], ['5 - Scalabilité', 5]]), {}, class: "mt-1 block w-full border-gray-300 rounded-md" %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :feedback, "Feedback", class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_area :feedback, class: "mt-1 block w-full border-gray-300 rounded-md" %>
+    </div>
+
+    <%= form.submit "Soumettre l'évaluation", class: "bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600" %>
+  <% end %>
+<% end %>

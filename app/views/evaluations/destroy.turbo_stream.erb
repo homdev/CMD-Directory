@@ -1,0 +1,3 @@
+<!-- app/views/evaluations/destroy.turbo_stream.erb -->
+<%= turbo_stream.remove dom_id(@evaluation) %>
+<%= turbo_stream.prepend "flash", partial: "shared/flash", locals: { notice: "Évaluation supprimée avec succès" } %>
