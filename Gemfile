@@ -81,7 +81,7 @@ gem 'image_processing', '~> 1.2'
 
 gem 'ruby-vips'
 
-gem 'tailwindcss-rails', '~> 2.3'
+gem 'tailwindcss-rails', '~> 3.0'
 
 
 
