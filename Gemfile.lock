@@ -91,7 +91,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
-    brakeman (6.2.1)
+    brakeman (6.2.2)
       racc
     builder (3.3.0)
     capybara (3.40.0)
@@ -131,6 +131,7 @@ GEM
     faker (3.4.2)
       i18n (>= 1.8.11, < 2)
     ffi (1.17.0-arm64-darwin)
+    ffi (1.17.0-x86_64-linux-gnu)
     friendly_id (5.5.1)
       activerecord (>= 4.0.0)
     globalid (1.2.1)
@@ -181,6 +182,8 @@ GEM
       net-protocol
     nio4r (2.7.3)
     nokogiri (1.16.7-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.26.3)
@@ -315,6 +318,8 @@ GEM
     strscan (3.1.0)
     tailwindcss-rails (2.7.3-arm64-darwin)
       railties (>= 7.0.0)
+    tailwindcss-rails (2.7.3-x86_64-linux)
+      railties (>= 7.0.0)
     thor (1.3.1)
     tilt (2.4.0)
     timeout (0.4.1)
@@ -344,6 +349,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   aasm (~> 5.5)
